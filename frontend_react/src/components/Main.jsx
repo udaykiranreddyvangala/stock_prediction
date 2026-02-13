@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from './Button'
+
 const Main = () => {
     return (
         <>
@@ -13,7 +14,7 @@ const Main = () => {
                         200-day moving averages, essential indicators widely
                         used by stock analysts to inform trading and investment
                         decisions.</p>
-                    <Button text="Login" class="btn-info" />
+                    <Button text="Login" url="/login" class="btn-info" />
 
                 </div>
             </div>
