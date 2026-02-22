@@ -1,7 +1,7 @@
 import React,{useContext} from 'react'
 import {Link,useNavigate} from 'react-router-dom'
 import Button from './Button'
-import { AuthContext } from './AuthProvider'
+import { AuthContext } from './authProvider'
 
 
 const Header = () => {
@@ -21,7 +21,7 @@ const Header = () => {
          <div>
               {isLoggedIn ? (
                 <>
-                <Button text='Dashboard' class="btn-info" url="/" />
+                <Button text='Dashboard' class="btn-info" url="/dashboard" />
                 &nbsp;
                 <button className='btn btn-outline-danger' onClick={handleLogout}>Logout</button>
                 </>

@@ -1,7 +1,7 @@
 import React, { useState,useContext } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from './AuthProvider'
+import { AuthContext } from './authProvider'
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -23,7 +23,7 @@ const Login = () => {
       localStorage.setItem('accessToken', response.data.access)
       localStorage.setItem('refreshToken', response.data.refresh)
       setIsLoggedIn(true)
-      navigate('/')
+      navigate('/dashboard')
     } catch (error) {
       setErrors('Invaid credentials!')
     }

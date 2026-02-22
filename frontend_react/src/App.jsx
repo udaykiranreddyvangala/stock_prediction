@@ -4,8 +4,12 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Register from './components/Register'
 import Login from './components/Login'
+import Dashboard from './components/dashboard/Dashboard'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import AuthProvider from './components/AuthProvider'
+import AuthProvider from './components/authProvider'
+import PrivateRoutes from './components/PrivateRoutes'
+import PublicRoutes from './components/PublicRoutes'
+
 function App() {
 
   return (
@@ -15,11 +19,16 @@ function App() {
         <BrowserRouter>
 
           <Header />
-
           <Routes>
             <Route path='/' element={<Main />} />
-            <Route path='/register/' element={<Register />} />
-            <Route path='/login/' element={<Login />} />
+
+
+            <Route path='/register/' element={<PublicRoutes><Register />  </PublicRoutes>} />
+            <Route path='/login/' element={<PublicRoutes><Login />  </PublicRoutes>} />
+
+
+            <Route path='/dashboard/' element={<PrivateRoutes> <Dashboard /> </PrivateRoutes>} />
+
           </Routes>
 
           <Footer />

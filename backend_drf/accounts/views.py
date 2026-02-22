@@ -9,7 +9,4 @@ class RegisterView(generics.CreateAPIView):
     serializer_class=UserSerializer
     permission_classes=[AllowAny]
 
-# class User(generics.RetrieveUpdateDestroyAPIView):
-#     queryset=User.objects.all()
-#     serializer_class=UserSerializer
-#     lookup_field='pk'
+

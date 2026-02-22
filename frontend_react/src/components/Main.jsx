@@ -1,7 +1,9 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Button from './Button'
+import { AuthContext } from './authProvider'
 
 const Main = () => {
+    const {isLoggedIn,setIsLoggedIn}=useContext(AuthContext)
     return (
         <>
             <div className='container rounded'>
@@ -14,7 +16,17 @@ const Main = () => {
                         200-day moving averages, essential indicators widely
                         used by stock analysts to inform trading and investment
                         decisions.</p>
-                    <Button text="Login" url="/login" class="btn-info" />
+                    <>
+                        {isLoggedIn ? (
+                            <>
+                                <Button text='Explore Now' class="btn-info" url="/dashboard" />
+                            </>
+                        ) : (
+                            <>
+                                <Button text='Explore Now' class="btn-outline-info" url="/login" />
+                            </>
+                        )}
+                    </>
 
                 </div>
             </div>
