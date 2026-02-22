@@ -7,8 +7,9 @@ import Login from './components/Login'
 import Dashboard from './components/dashboard/Dashboard'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import AuthProvider from './components/authProvider'
-import PrivateRoutes from './components/PrivateRoutes'
-import PublicRoutes from './components/PublicRoutes'
+import PrivateRoute from './PrivateRoute'
+import PublicRoute from './PublicRoute'
+
 
 function App() {
 
@@ -19,15 +20,13 @@ function App() {
         <BrowserRouter>
 
           <Header />
+
           <Routes>
             <Route path='/' element={<Main />} />
 
-
-            <Route path='/register/' element={<PublicRoutes><Register />  </PublicRoutes>} />
-            <Route path='/login/' element={<PublicRoutes><Login />  </PublicRoutes>} />
-
-
-            <Route path='/dashboard/' element={<PrivateRoutes> <Dashboard /> </PrivateRoutes>} />
+            <Route path='/register' element={<PublicRoute><Register /></PublicRoute>} />
+            <Route path='/login' element={<PublicRoute><Login /></PublicRoute>} />
+            <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>} />
 
           </Routes>
 
