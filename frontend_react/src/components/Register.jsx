@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axiosInstance from '../axiosInstance'
 import axios from 'axios'
 const Register = () => {
     const [username, setUsername] = useState('')
@@ -17,7 +18,10 @@ const Register = () => {
         }
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/v1/register/', userData)
+            // const response = await axios.post('http://127.0.0.1:8000/api/v1/register/', userData)
+
+
+            const response = await axiosInstance.post('/register/',userData);
             setSuccess(true)
             setErrors({})
         } catch (error) {
@@ -41,7 +45,7 @@ const Register = () => {
                             <input type="password" name="" id="" value={password} onChange={(e) => { setPassword(e.target.value) }} className="form-control mb-4" placeholder='Set password' />
 
                             {success && <div className='alert alert-success'>Registration Successful!</div>}
-                            {wait? (
+                            {wait ? (
                                 <button type="submit" className='btn btn-info d-block mx-auto mt-3' disabled>Please wait...</button>
                             ) : (
                                 <button type="submit" className='btn btn-outline-info d-block mx-auto mt-3'>Register</button>

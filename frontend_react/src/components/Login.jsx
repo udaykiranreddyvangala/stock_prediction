@@ -1,4 +1,5 @@
-import React, { useState,useContext } from 'react'
+import React, { useState, useContext } from 'react'
+import axiosInstance from '../axiosInstance'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from './authProvider'
@@ -8,7 +9,7 @@ const Login = () => {
   const [errors, setErrors] = useState('')
   const navigate = useNavigate()
 
-  const {isLoggedIn,setIsLoggedIn}=useContext(AuthContext)
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
 
   const handleLogin = async (e) => {
 
@@ -19,7 +20,12 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/v1/token/', userData)
+      // const response = await axios.post('http://127.0.0.1:8000/api/v1/token/', userData)
+
+
+
+      const response = await axiosInstance.post('/token/', userData);
+
       localStorage.setItem('accessToken', response.data.access)
       localStorage.setItem('refreshToken', response.data.refresh)
       setIsLoggedIn(true)
@@ -37,7 +43,7 @@ const Login = () => {
             <h3 className="text-light text-center mb-4">Login</h3>
             <form onSubmit={handleLogin}>
               <input type="text" name="" id="" value={username} onChange={(e) => { setUsername(e.target.value) }} className="form-control mb-3" placeholder='Username' />
-              <input type="password" name="" id="" value={password} onChange={(e) => { setPassword(e.target.value) }} className="form-control mb-4" placeholder='Set password' />
+              <input type="password" name="" id="" value={password} onChange={(e) => { setPassword(e.target.value) }} className="form-control mb-4" placeholder='Password' />
 
               {errors && <div className='text-danger'>{errors}</div>}
 
